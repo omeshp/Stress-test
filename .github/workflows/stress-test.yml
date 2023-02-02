@@ -10,6 +10,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3	
+    - name: Echo cgroup settings
+      run: cat /etc/cgconfig.conf
+      shell: bash
     - name: Install modules
       run: pip install psutil
       shell: bash
