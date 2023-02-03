@@ -1,0 +1,28 @@
+name: Stress test
+
+on: [push]
+
+jobs:
+  build-linux:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+    continue-on-error: true 
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3	
+    - name: Echo cgroup settings
+      run: cat /etc/cgconfig.conf
+      shell: bash
+    - name: Install modules
+      run: pip install psutil
+      shell: bash			
+    - name: Disable oomd
+      run: systemctl disable --now systemd-oomd
+      shell: bash
+    - name: Check oomd
+      run: systemctl is-enabled systemd-oomd
+      shell: bash			
+    - name: Stress test
+      run: python3 stress_test.py 60
+      shell: bash
