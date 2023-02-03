@@ -6,7 +6,7 @@ jobs:
   build-linux:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ ubuntu-20.04 ]
     continue-on-error: true 
     runs-on: ${{ matrix.os }}
     steps:
