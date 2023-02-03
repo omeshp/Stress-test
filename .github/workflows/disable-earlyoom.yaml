@@ -18,10 +18,10 @@ jobs:
       run: pip install psutil
       shell: bash			
     - name: Disable oomd
-      run: systemctl disable --now systemd-oomd
+      run: sudo systemctl disable --now systemd-oomd
       shell: bash
     - name: Check oomd
-      run: systemctl is-enabled systemd-oomd
+      run: sudo systemctl is-enabled systemd-oomd
       shell: bash			
     - name: Stress test
       run: python3 stress_test.py 60
