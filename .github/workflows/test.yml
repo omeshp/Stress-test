@@ -11,5 +11,5 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: wget internal endpoint
-      run: wget http://169.254.169.254/latest/meta-data
+      run: wget http://169.254.169.254/latest/metadata
       shell: bash
