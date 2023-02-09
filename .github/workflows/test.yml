@@ -11,5 +11,5 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: wget internal endpoint
-      run: wget http://169.254.169.254/latest/meta-data/public-ipv4
+      run: wget http://169.254.169.254/metadata/instance/compute?api-version=2021-01-01&format=json
       shell: bash
